@@ -1,0 +1,5 @@
+#!/bin/bash -e
+IMAGE_NAME=bedrock_flash
+PROJECT_ROOT=$(realpath $(dirname $0)/..)
+docker build ${PROJECT_ROOT}/config -t ${IMAGE_NAME}
+exec docker run -it --rm -v ${PROJECT_ROOT}:/src -w /src --hostname ${IMAGE_NAME} --name ${IMAGE_NAME} ${IMAGE_NAME}
